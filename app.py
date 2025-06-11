@@ -9,14 +9,14 @@ le = pickle.load(open("encoder.pkl", "rb"))
 st.title("Prediksi Kepribadian")
 
 with st.form("form"):
-    time_alone = st.slider("Waktu dihabiskan sendiri (0-10)", 0, 15, 5)
-    event_attend = st.slider("Kehadiran di acara sosial (0-10)", 0, 15, 5)
-    going_out = st.slider("Frekuensi keluar rumah (0-10)", 0, 15, 5)
-    friend_circle = st.slider("Ukuran lingkaran pertemanan (0-10)", 0, 15, 5)
-    post_freq = st.slider("Frekuensi posting di medsos (0-10)", 0, 15, 5)
-    stage_fear = st.selectbox("Takut tampil di depan umum?", ["Yes", "No"])
-    drained_social = st.selectbox("Lelah setelah bersosialisasi?", ["Yes", "No"])
-    submit = st.form_submit_button("Prediksi")
+    time_alone = st.slider("Time spent alone (0-10)", 0, 15, 5)
+    event_attend = st.slider("Attendance at social events (0-10)", 0, 15, 5)
+    going_out = st.slider("Frequency of going out (0-10)", 0, 15, 5)
+    friend_circle = st.slider("Size of social circle (0-10)", 0, 15, 5)
+    post_freq = st.slider("Frequency of posting on social media (0-10)", 0, 15, 5)
+    stage_fear = st.selectbox("Afraid of appearing in public?", ["Yes", "No"])
+    drained_social = st.selectbox("Tired after socializing?", ["Yes", "No"])
+    submit = st.form_submit_button("Prediction")
 
 if submit:
     input_df = pd.DataFrame({
@@ -30,6 +30,6 @@ if submit:
     })
 
     prediction = model.predict(input_df)[0]
-    personality = le.inverse_transform([prediction])[0]  # ← ubah ke label asli
+    personality = le.inverse_transform([prediction])[0]
 
-    st.success(f"Kamu kemungkinan adalah seorang: **{personality}**")
+    st.success(f"You are probably a: **{personality}**")
