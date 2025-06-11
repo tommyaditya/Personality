@@ -6,7 +6,7 @@ import pickle
 model = pickle.load(open("model.pkl", "rb"))
 le = pickle.load(open("encoder.pkl", "rb"))
 
-st.title("Prediksi Kepribadian")
+st.title("Personality Prediction")
 
 with st.form("form"):
     time_alone = st.slider("Time spent alone (0-10)", 0, 15, 5)
